@@ -20,9 +20,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSLog(@"launchOptions == %@",launchOptions);
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(0, 300, 400, 200);
+    label.numberOfLines = 0;
+    label.backgroundColor = [UIColor yellowColor];
+    label.text = [NSString stringWithFormat:@"label == %@",launchOptions];
+        UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
+    [[[nav childViewControllers] firstObject].view addSubview:label];
     return YES;
 }
-
+#warning 此方法程序已经被杀死后 仍然会调用
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
     NSLog(@"options == %@",url.absoluteString);
